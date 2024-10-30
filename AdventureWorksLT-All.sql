@@ -11,6 +11,7 @@ CREATE TABLE SalesLT.Address (
     StateProvince VARCHAR(50),
     CountryRegion VARCHAR(50),
     PostalCode VARCHAR(15),
+    rowguid VARCHAR(200),
     ModifiedDate DATE
 );
 GO
@@ -31,9 +32,21 @@ CREATE TABLE SalesLT.Customer (
     Phone VARCHAR(25),
     PasswordHash VARCHAR(128),
     PasswordSalt VARCHAR(10),
+    rowguid VARCHAR(200),    
     ModifiedDate DATE
 );
 GO
+
+DROP TABLE IF EXISTS SalesLT.ProductCategory;
+CREATE TABLE SalesLT.ProductCategory (
+    ProductCategoryID INT,
+    ParentProductCategoryID INT,
+    Name VARCHAR(100),
+    rowguid VARCHAR(200),
+    ModifiedDate DATE
+);
+GO
+
 
 -- **Create CustomerAddress Table**
 DROP TABLE IF EXISTS SalesLT.CustomerAddress;
@@ -41,6 +54,7 @@ CREATE TABLE SalesLT.CustomerAddress (
     CustomerID INT,
     AddressID INT,
     AddressType VARCHAR(50),
+    rowguid VARCHAR(200),    
     ModifiedDate DATE
 );
 GO
@@ -63,6 +77,7 @@ CREATE TABLE SalesLT.Product (
     DiscontinuedDate DATE,
     ThumbNailPhoto VARBINARY(MAX),
     ThumbnailPhotoFileName VARCHAR(50),
+    rowguid VARCHAR(200),    
     ModifiedDate DATE
 );
 GO
@@ -72,6 +87,7 @@ DROP TABLE IF EXISTS SalesLT.ProductDescription;
 CREATE TABLE SalesLT.ProductDescription (
     ProductDescriptionID INT,
     Description VARCHAR(400),
+    rowguid VARCHAR(200),    
     ModifiedDate DATE
 );
 GO
@@ -81,6 +97,8 @@ DROP TABLE IF EXISTS SalesLT.ProductModel;
 CREATE TABLE SalesLT.ProductModel (
     ProductModelID INT,
     Name VARCHAR(50),
+    CatalogDescription VARCHAR(400),    
+    rowguid VARCHAR(200),    
     ModifiedDate DATE
 );
 GO
@@ -91,6 +109,7 @@ CREATE TABLE SalesLT.ProductModelProductDescription (
     ProductModelID INT,
     ProductDescriptionID INT,
     Culture VARCHAR(6),
+    rowguid VARCHAR(200),    
     ModifiedDate DATE
 );
 GO
@@ -118,6 +137,7 @@ CREATE TABLE SalesLT.SalesOrderHeader (
     Freight DECIMAL(10,2),
     TotalDue DECIMAL(10,2),
     Comment VARCHAR(MAX),
+    rowguid VARCHAR(200),    
     ModifiedDate DATE
 );
 GO
@@ -132,6 +152,7 @@ CREATE TABLE SalesLT.SalesOrderDetail (
     UnitPrice DECIMAL(10,2),
     UnitPriceDiscount DECIMAL(5,2),
     LineTotal DECIMAL(10,2),
+    rowguid VARCHAR(200),    
     ModifiedDate DATE
 );
 GO
